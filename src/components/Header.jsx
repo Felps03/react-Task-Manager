@@ -1,10 +1,8 @@
-import React from 'react'
-
 const Header = () => {
   return (
-    <div className='header'>
+    <header className="header">
       <h1>Task Manager</h1>
-    </div>
+    </header>
   )
 }
 

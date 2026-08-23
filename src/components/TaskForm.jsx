@@ -1,32 +1,28 @@
-import React, { useState, useContext, useEffect } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { TaskListContext } from '../contexts/TaskListContext'
 
 const TaskForm = () => {
   const { addTask, clearList, editTask, editItem } = useContext(TaskListContext)
   const [title, setTitle] = useState('')
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    if (!editItem) {
-      addTask(title)
-      setTitle('')
-    } else {
-      editTask(title, editItem.id)
-    }
-  }
-
-  const handleChange = e => {
-    setTitle(e.target.value)
-  }
-
   useEffect(() => {
+    setTitle(editItem ? editItem.title : '')
+  }, [editItem])
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    // `required` still lets a whitespace-only title through.
+    const trimmed = title.trim()
+    if (!trimmed) return
+
     if (editItem) {
-      setTitle(editItem.title)
-      console.log(editItem)
+      editTask(trimmed, editItem.id)
     } else {
+      addTask(trimmed)
       setTitle('')
     }
-  }, [editItem])
+  }
 
   return (
     <form onSubmit={handleSubmit} className="form">
@@ -34,15 +30,18 @@ const TaskForm = () => {
         type="text"
         placeholder="Add Task..."
         value={title}
-        onChange={handleChange}
+        onChange={(e) => setTitle(e.target.value)}
         required
         className="task-input"
+        aria-label="Task title"
       />
       <div className="buttons">
         <button type="submit" className="btn add-task-btn">
           {editItem ? 'Edit Task' : 'Add Task'}
         </button>
-        <button className="btn clear-btn" onClick={clearList}>
+        {/* Without an explicit type this button defaults to "submit" and
+            would add a task on top of clearing the list. */}
+        <button type="button" className="btn clear-btn" onClick={clearList}>
           Clear
         </button>
       </div>

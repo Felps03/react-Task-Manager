@@ -1,10 +1,9 @@
-import React from "react";
-import TaskListContextProvider from "../contexts/TaskListContext";
-import TaskList from "./TaskList";
-import TaskForm from "./TaskForm";
+import TaskListContextProvider from '../contexts/TaskListContext'
+import Header from './Header'
+import TaskForm from './TaskForm'
+import TaskList from './TaskList'
 
-import "../App.css";
-import Header from "./Header";
+import '../App.css'
 
 const App = () => {
   return (
@@ -19,7 +18,7 @@ const App = () => {
         </div>
       </div>
     </TaskListContextProvider>
-  );
-};
+  )
+}
 
-export default App;
+export default App
