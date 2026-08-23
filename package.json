@@ -1,8 +1,37 @@
 {
-  "name": "task-manager",
+  "name": "react-task-manager",
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "description": "A simple task manager built with React 19 and Vite. Add, edit and remove tasks with localStorage persistence.",
+  "keywords": [
+    "react",
+    "react19",
+    "vite",
+    "javascript",
+    "hooks",
+    "context-api",
+    "todo-app",
+    "task-manager",
+    "localstorage",
+    "frontend"
+  ],
+  "homepage": "https://github.com/Felps03/react-Task-Manager#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Felps03/react-Task-Manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Felps03/react-Task-Manager/issues"
+  },
+  "author": {
+    "name": "Felps03",
+    "url": "https://github.com/Felps03"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": "^20.19.0 || >=22.12.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
